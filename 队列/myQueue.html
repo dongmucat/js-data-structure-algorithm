@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function myQueue(){
+        this.dataStore = [];
+        //进入队列，也就是添加到数组的末尾
+        this.enqueue = function (val) {
+            this.dataStore.push(val)
+        }
+        //出队列，返回并且删除数组的第一个元素
+        this.dequeue = function () {
+            return this.dataStore.shift()
+        }
+        //返回队列最前面的元素，也就是数组的第一个元素
+        this.front = function (){
+            return this.dataStore[0]
+        }
+        //返回队列最后面的元素，也就是数组的最后的元素
+        this.back = function () {
+            return this.dataStore[this.dataStore.length-1]
+        }
+        this.size = function () {
+            return this.dataStore.length
+        }
+
+    }
+</script>
+</html>
