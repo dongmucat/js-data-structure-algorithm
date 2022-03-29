@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    class Stack{
+
+        constructor(){
+            this.top = 0;
+            this.items = {};
+        }
+        //入栈
+        push(val){
+            this.items[this.top++] = val;
+            return true;
+        }
+        //出栈，并返回出栈的元素
+        pop(){
+            if(this.isEmpty()){
+                return undefined
+            }
+            const result = this.items[--this.top];
+            delete this.items[this.top];
+            return result;
+        }
+        //判断是否为空
+        isEmpty(){
+            return this.top === 0;
+        }
+        //清除
+        clear(){
+            this.top = 0;
+            this.items = {};
+        }
+        //返回栈的大小
+        size(){
+            return this.top;
+        }
+        //返回栈顶元素
+        peek(){
+            if(this.isEmpty()){
+                return undefined;
+            }
+            return this.items[this.top-1];
+        }
+        //元素变成字符串输出
+        toString(){
+            if(this.isEmpty()){
+                return '';
+            }
+            let str = `${this.items[0]}`;
+            for (let index = 1; index < this.top; index++) {
+                
+                str = `${str},${this.items[index]}`;
+            }
+            return str;
+        }
+
+    }
+    function test() {
+        let s = new Stack();
+
+        for (let index = 0; index < 8; index++) {
+            s.push(index);
+        }
+
+        console.log(s);
+        console.log(s.peek());
+        console.log(s.toString());
+    }
+    const s = new Stack();
+    for (let index = 0; index < 8; index++) {
+            s.push(index);
+        }
+    console.log(Object.getOwnPropertyNames(s));
+    console.log(Object.keys(s));
+    console.log(s.items);
+</script>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //通过WeakMap来封装items属性，WeakMap只能通过键来访问，键只能是对象
+    class Stack{
+        constructor(){
+            this.items = new WeakMap();
+            this.items.set(this,[]);
+        }
+        push(val){
+            const arr = this.items.get(this);
+            arr.push(val);
+        }
+        pop(){
+            const arr = this.items.get(this);
+            if(arr.length === 0){
+                return undefined;
+            }
+            arr.pop()
+        }
+        //其他方法
+    }
+
+</script>
+</html>

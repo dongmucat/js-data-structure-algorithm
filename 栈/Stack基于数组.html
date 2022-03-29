@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //使用数组dataStore保存站内元素，构造函数将其初始化为一个空数组。
+    //变量top定义栈顶的位置，构造时初始化为0，表示栈的起始位置为0
+    function Stack() {
+        this.dataStore = [];
+        this.top = 0;
+        this.push = push;
+        this.pop = pop;
+        this.peek = peek;
+        this.clear = clear;
+        this.length = length;
+        this.toString =  toString
+
+        //注意++操作符的位置，它放在this.top的后面，这样新入栈的元素就被放在top的当前位置对应的位置，同时top自加1，指向下一个位置
+        function push(element) {
+            this.dataStore[this.top++] = element;
+        }
+        //返回栈顶元素，同时top的位置减1
+        function pop() {
+            return this.dataStore[--this.top];
+        }
+        //peek()方法返回数组的第top-1个位置的元素，即栈顶元素
+        function peek() {
+            return this.dataStore[this.top - 1];
+        }
+        //将top的值设置0，即清空一个栈
+        function clear() {
+            this.top = 0;
+            this.dataStore = []
+        }
+        //返回变量top的值即为栈内元素的个数
+        function length() {
+            return this.top;
+        }
+        function toString(){
+
+        }
+    }
+
+    function isPalindrome(word) {
+        var s = new Stack();
+        for (var i = 0; i < word.length; ++i) {
+            s.push(word[i]);
+        }
+        var reword = "";
+        while (s.length() > 0) {
+            reword += s.pop();
+        }
+        if (word === reword) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    var word = "dad";
+    if (isPalindrome(word)) {
+        document.writeln(word + " is a palindrome.");
+    } else {
+        document.writeln(word + " is not a palindrome");
+    }
+    word = "";
+    if (isPalindrome(word)) {
+        document.writeln(word + " is a palindrome.");
+    } else {
+        document.writeln(word + " is not a palindrome");
+    }
+</script>
+
+</html>
