@@ -1,3 +1,4 @@
+/* 使用代理模式可以降低耦合度，开发Singleton就可以更专注一些*/
 class SingletonProxy {
     constructor(name) {
         /* 如果为空 */
@@ -18,9 +19,11 @@ class Singleton {
     }
 }
 
-let Winner = new SingletonProxy('Winner');
-let Looser = new SingletonProxy('Looser');
+const Jack = new SingletonProxy('Jack');
+const Tom = new SingletonProxy('Tom');
 
-console.log(Winner === Looser); // true
-console.log(Winner.getName());  // 'Winner'
-console.log(Looser.getName());  // 'Winner'
+console.log(Jack === Tom); // true
+console.log(Jack.getName());  // 'Winner'
+console.log(Tom.getName());  // 'Winner'
+console.log(Jack);
+console.log(Tom); 
